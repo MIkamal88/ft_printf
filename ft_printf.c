@@ -6,64 +6,75 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 15:05:00 by mshehata          #+#    #+#             */
-/*   Updated: 2022/11/27 16:54:16 by mshehata         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:58:48 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar_fd(char c)
+int	ft_printf_checker(char c, va_list *args)
 {
-	write(1, &c, 1);
-}
+	int	len;
 
-void	ft_printf_checker(char c)
-{
+	len = 0;
 	if (c == 's')
-		ft_print_string_PH();
+		len += ft_print_str(va_arg(*args, char *));
 	else if (c == 'c')
-		ft_putchar_PH();
-	else if (c == 'p')
-		ft_print_ptr_PH();
-		//The void * pointer argument has to be printed in Hexadecimal format.
+	len += ft_print_char(va_arg(*args, int));
 	else if (c == 'd' || c == 'i')
-		ft_print_num_PH();
-		//Decimal base 10
+		ft_print_num(va_arg(*args, int));
 	else if (c == 'u')
-		ft_print_unsigned_int_PH();
-	else if (c == 'x')
-		ft_print_hex_lw_PH();
-		//lower case hexadecimal
-	else if (c == 'X')
-		ft_print_hex_uc_PH();
-		//Upper case hexadecimal
+		ft_print_unsig_int(va_arg(*args, unsigned int));
+	// else if (c == 'x')
+	// 	ft_print_hex_lw_PH();
+	// else if (c == 'X')
+	// 	ft_print_hex_uc_PH();
+	// else if (c == 'p')
+	// 	ft_print_ptr(va_arg(*args, char *));
 	else if (c == '%')
-		ft_putchar_fd('%');
+	{
+		ft_print_char('%');
+		len++;
+	}
+	return (len);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
 	int		i;
+	int		len;
 
+	len = 0;
+	i = 0;
 	va_start(args, str);
 	while (str[i])
 	{
 		if (str[i] == '%')
 		{
 			i++;
-			ft_printf_checker(str[i]);
+			len += ft_printf_checker(str[i], &args);
 			i++;
 		}
 		else
 		{
-			ft_putchar_fd(str[i]);
+			len += ft_print_char(str[i]);
 			i++;
 		}
 	}
 	va_end(args);
-	return (i);
+	return (len);
 	//?? Function should return the number of characters printed excluding NULL
+}
+
+int	main()
+{
+	// char str[] = "Test";
+
+	int y = ft_printf("%d %d lol %i %i %u\n", 1, 2, 3, 4, 5);
+	int z = printf("%d %d lol %i %i %u\n", 1, 2, 3, 4, 5);
+	//printf("%s suck it %c\n%d %d lololol %i %i %u\n", "abc", 'b', 1, 2, 3, 4789456123000, -4789456123000);
+	printf("%d\n%d", y, z);
 }
 
 // int	max(int num_args, ...)
