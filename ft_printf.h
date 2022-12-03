@@ -19,10 +19,14 @@
 # include <stdlib.h>
 # include <stdio.h> // TO BE REMOVED DURING CHECK
 
-size_t	ft_strlen(const char *str);
-int		ft_print_char(char c);
-int		ft_print_str(char *s);
-void	ft_print_num(int n);
-void	ft_print_unsig_int(unsigned int n);
+int	ft_print_char(char c);
+int	ft_print_str(char *s);
+int	ft_print_num(int n);
+int	ft_print_unsig_int(unsigned int n);
+int	ft_print_hex_lc(int n);
+int	ft_print_hex_uc(int n);
+int	ft_print_ptr(unsigned long int n);
+int	ft_printf_checker(char c, va_list *args);
+int	ft_printf(const char *str, ...);
 
 #endif

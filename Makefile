@@ -14,20 +14,18 @@ NAME = libftprintf.a
 
 FILES = ft_printf.c ft_print_chars.c ft_print_num.c\
 
-OFILES = $(Files:.c=.o)
+OFILES = $(FILES:.c=.o)
 
 CC = gcc
 
 FLAGS = -Wall -Wextra -Werror -c
-
-NAME = $(OUTPUT)
 
 RM = rm -f
 
 all : $(NAME)
 
 $(NAME):	$(OFILES)
-					ar rcs $(NAME) $(OFILES)
+		ar -rc $(NAME) $(OFILES)
 
 clean:
 	$(RM) $(OFILES)
