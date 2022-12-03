@@ -6,7 +6,7 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 15:05:00 by mshehata          #+#    #+#             */
-/*   Updated: 2022/11/29 15:58:48 by mshehata         ###   ########.fr       */
+/*   Updated: 2022/12/03 13:43:05 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ int	ft_printf_checker(char c, va_list *args)
 	else if (c == 'u')
 		len += ft_print_unsig_int(va_arg(*args, unsigned int));
 	else if (c == 'x')
-		len += ft_print_hex_lc(va_arg(*args, int));
+		len += ft_print_hex_lc(va_arg(*args, unsigned int));
 	else if (c == 'X')
-		len += ft_print_hex_uc(va_arg(*args, int));
+		len += ft_print_hex_uc(va_arg(*args, unsigned int));
 	else if (c == 'p')
 	{
 		write(1, "0x", 2);
 		len += 2;
-		len += ft_print_ptr(va_arg(*args, unsigned long int));
+		len += ft_print_ptr(va_arg(*args, size_t));
 	}
 	else if (c == '%')
 		len += ft_print_char('%');
@@ -69,9 +69,6 @@ int	ft_printf(const char *str, ...)
 
 // int	main(void)
 // {
-// 	char *p = "THis is a test";
-// 	int	y = ft_printf("%c %s lol123 %u %d %X %p\n", 'c', "abc", 123, -123, 123, p);
-// 	int	z = printf("%c %s lol123 %u %d %X %p\n", 'c', "abc", 123, -123, 123, p);
-
-// 	printf("%d\n%d\n", y, z);
+// 	int	y = ft_printf(" %x \n", __LONG_MAX__);
+// 	int	z = printf(" %x ", __LONG_MAX__);
 // }

@@ -6,7 +6,7 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:50:18 by mshehata          #+#    #+#             */
-/*   Updated: 2022/11/29 13:38:26 by mshehata         ###   ########.fr       */
+/*   Updated: 2022/12/03 13:42:56 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_print_unsig_int(unsigned int n)
 	return (i);
 }
 
-int	ft_print_hex_lc(int n)
+int	ft_print_hex_lc(unsigned int n)
 {
 	int	i;
 
@@ -65,7 +65,7 @@ int	ft_print_hex_lc(int n)
 	return (i);
 }
 
-int	ft_print_hex_uc(int n)
+int	ft_print_hex_uc(unsigned int n)
 {
 	int	i;
 
@@ -80,7 +80,7 @@ int	ft_print_hex_uc(int n)
 	return (i);
 }
 
-int	ft_print_ptr(unsigned long int n)
+int	ft_print_ptr(size_t n)
 {
 	int	i;
 
